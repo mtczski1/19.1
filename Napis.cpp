@@ -27,6 +27,7 @@ Napis::Napis(const Napis& n)
 
 Napis::~Napis()
 {
+    delete[] litery_;
     cout<<endl<<"Destruktor"<<endl;
 }
 
@@ -55,6 +56,7 @@ void Napis::wstaw(const char znak)
 
     else if(ile_liter_==miejsce_)
     {
+        cout<<"Realokowano Pamiec"<<endl;
         char* pom = new char[miejsce_+1];
 
         for(int i=0; i<miejsce_; i++)
@@ -63,8 +65,11 @@ void Napis::wstaw(const char znak)
             }
             pom[ile_liter_]=znak;
             litery_=pom;
+            delete [] pom;
             ile_liter_++;
             miejsce_++;
+
+
     }
 }
 
